@@ -1,3 +1,5 @@
+PATH=$PATH:$HOME/.cargo/bin 
+RUST_BACKTRACE=1
 rustup target add wasm32-unknown-unknown
 cargo build --release --target wasm32-unknown-unknown
 sudo chown -R $(id -u):$(id -g) target html
