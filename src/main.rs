@@ -24,6 +24,7 @@ mod level_loader;
 mod game_input;
 mod game;
 mod asset_id { include!(concat!(env!("OUT_DIR"), "/asset_id.rs")); }
+mod wasm_imports;
 
 use gate::{App, AppContext, AppInfo, KeyCode};
 use gate::renderer::{Renderer, Affine};
@@ -32,13 +33,15 @@ use game_input::{GameInput, InputEvent};
 use game::GameBoard;
 use asset_id::{AssetId, MusicId, SpriteId};
 use level_loader::LEVEL_COUNT;
+use self::wasm_imports::*;
+use std::os::raw::c_int;
 
 fn main() {
     // TODO allow some flexibility in the app height
     let info = AppInfo::with_max_dims(game::SCREEN_PIXELS_HEIGHT * 16. / 9., game::SCREEN_PIXELS_HEIGHT)
                        .min_dims(game::SCREEN_PIXELS_HEIGHT * 4. / 3., game::SCREEN_PIXELS_HEIGHT)
                        .tile_width(8)
-                       .title("Gate Demo Game")
+                       .title("OSOCO Xmas2018 Game")
                        .print_workload_info()
                        .print_gl_info();
     gate::run(info, GameApp::new());
@@ -52,6 +55,9 @@ impl GameApp {
     }
 
     fn load_next_level(&mut self) {
+        unsafe {
+          onFinishedLevelEvent(self.level as c_int);
+	}        
         self.level = (self.level + 1) % LEVEL_COUNT;
         self.board = level_loader::load(self.level);
         if let Some(held_dir) = self.input.held_dir() {
