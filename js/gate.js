@@ -224,9 +224,12 @@ function gate(args) {
         exp: Math.exp,
         fmod: function fmod(a,b) { return a % b; },
         round: Math.round,
-        onFinishedLevelEvent: function(level) {
+        onFinishedLevel: function(level) {
           console.log("Finished level " + level);	      
-        }	  
+        },
+        onButtonPressed: function(level, buttonId) {
+          console.log("Button " + buttonId + " pressed in level " + level);
+        }
       }
     };
 

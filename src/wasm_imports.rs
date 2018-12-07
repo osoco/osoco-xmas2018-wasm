@@ -14,8 +14,9 @@
 
 //! This module contains methods imported from the game javascript code for WebAssembly.
 
-use std::os::raw::c_int;
+use std::os::raw::c_uint;
 
 extern {
-    pub fn onFinishedLevelEvent(level: c_int);
+    pub fn onFinishedLevel(level: c_uint);
+    pub fn onButtonPressed(level: c_uint, buttonId: u32);
 }

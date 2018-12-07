@@ -42,7 +42,7 @@ pub fn load(level_num: usize) -> GameBoard {
     let level = LevelFile::new(LEVELS[level_num]);
     let level_index = LevelFile::new(LEVELS_INDEX[level_num]);
 
-    let mut board = GameBoard::builder(level.dims);
+    let mut board = GameBoard::builder(level.dims, level_num);
     for y in 0..level.dims.1 {
         for x in 0..level.dims.0 {
             let pos = (x, y);

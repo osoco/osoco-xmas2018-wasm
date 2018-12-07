@@ -34,7 +34,7 @@ use game::GameBoard;
 use asset_id::{AssetId, MusicId, SpriteId};
 use level_loader::LEVEL_COUNT;
 use self::wasm_imports::*;
-use std::os::raw::c_int;
+use std::os::raw::c_uint;
 
 fn main() {
     // TODO allow some flexibility in the app height
@@ -56,7 +56,7 @@ impl GameApp {
 
     fn load_next_level(&mut self) {
         unsafe {
-          onFinishedLevelEvent(self.level as c_int);
+          onFinishedLevel(self.level as c_uint);
 	}        
         self.level = (self.level + 1) % LEVEL_COUNT;
         self.board = level_loader::load(self.level);
