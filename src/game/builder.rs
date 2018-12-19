@@ -72,7 +72,7 @@ impl GameBoardBuilder {
 
     pub fn add_player(&mut self, pos: Idx2) { self.player = Some(PlayerEnum::Start(idx_to_vec(pos))); }
     pub fn add_star(&mut self, pos: Idx2) {
-        let (star, hitbox) = Star::new(self.id_gen.next(), pos);
+        let (star, hitbox) = Star::new(self.id_gen.next(), pos, self.level);
         let overlaps = self.collider.add_hitbox(PieceProfile::new(star.id(), PieceKind::Star), hitbox);
         assert!(overlaps.is_empty(), "unexpected overlap with star hitbox");
         self.star = Some(star);

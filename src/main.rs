@@ -51,7 +51,7 @@ struct GameApp { input: GameInput, level: usize, board: GameBoard }
 
 impl GameApp {
     pub fn new() -> GameApp {
-        GameApp { input: GameInput::new(), level: 0, board: level_loader::load(0) }
+        GameApp { input: GameInput::new(), level: 5, board: level_loader::load(5) }
     }
 
     fn load_next_level(&mut self) {

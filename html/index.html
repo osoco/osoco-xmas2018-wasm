@@ -335,12 +335,46 @@
 	"0": {
 	    "1": { "year": 2003, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
 	    "2": { "year": 2004, "content": "<p>First paragraph</p><p>Other paragraph</p>" }
-	}
+	},
+	"1": {
+	    "1": { "year": 2005, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "2": { "year": 2006, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "3": { "year": 2007, "content": "<p>First paragraph</p><p>Other paragraph</p>" }
+	},
+	"2": {
+	    "0": { "year": 2008, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "1": { "year": 2009, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "2": { "year": 2010, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "3": { "year": 2011, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "4": { "year": 2012, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	},
+	"3": {
+	    "0": { "year": 2013, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "1": { "year": 2014, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "2": { "year": 2015, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "3": { "year": 2016, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	},
+	"4": {
+	    "0": { "year": 2017, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "1": { "year": 2018, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "2": { "year": 2019, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "3": { "year": 2020, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+            "4": { "year": 2021, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	},
+	"5": {
+	    "0": { "year": 2022, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "1": { "year": 2023, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "2": { "year": 2024, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	},		
+	
     };
     const levelsInfo = {
-	"0": { "header": "Level 1", "content": "<p>First paragraph</p><p>Other paragraph</p>" }
-    };
-    
+	"0": { "header": "Level 1", "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	"1": { "header": "Level 2", "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	"2": { "header": "Level 3", "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	"3": { "header": "Level 4", "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	"4": { "header": "Level 5", "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+    };    
     var gateDiv = document.getElementById("gate-wrapper-div");
     var gateCanvas = document.getElementById("gate-canvas");
     var loadingNotice = document.getElementById("loading-notice");
@@ -375,6 +409,7 @@
     }
 
     function showButtonPopup(level, button, callback) {
+	console.log("Button " + button + " at level " + level);
       const buttonPopupContainer = document.getElementById("buttonPopupContainer");
       const closePopup = e => {
         buttonPopupContainer.style.display = "none";
@@ -406,8 +441,7 @@
 
     function delayedAddClass(element, newClassName) {
       element.classList.add(newClassName);
-    }
-	
+    }	
     
     gate({
       wrapperDiv: gateDiv,
