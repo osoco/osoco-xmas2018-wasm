@@ -116,111 +116,77 @@
 							height: 100px;
 						}
 					}
-					.box.n1 .level >div:nth-child(1)::before{
+					.box .level >div:nth-child(1)::before{
 						display: block;
 						width: 100%;
 						height: 100%;
 						background-image: url('marcador/o-1.png');
 						content: "";
+						opacity: 0;
 					}
-					.box.n2 .level >div:nth-child(1)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/o-1.png');
-						content: "";
-					}
-					.box.n2 .level >div:nth-child(2)::before{
+						.box.n1 .level >div:nth-child(1)::before, 
+						.box.n2 .level >div:nth-child(1)::before,
+						.box.n3 .level >div:nth-child(1)::before,
+						.box.n4 .level >div:nth-child(1)::before,
+						.box.n5 .level >div:nth-child(1)::before{
+							opacity: 1;
+							transition: all 1.5s;
+						}
+					.box .level >div:nth-child(2)::before{
 						display: block;
 						width: 100%;
 						height: 100%;
 						background-image: url('marcador/s.png');
 						content: "";
+						opacity: 0;
 					}
-					.box.n3 .level >div:nth-child(1)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/o-1.png');
-						content: "";
-					}
-					.box.n3 .level >div:nth-child(2)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/s.png');
-						content: "";
-					}
-					.box.n3 .level >div:nth-child(3)::before{
+						.box.n2 .level >div:nth-child(2)::before,
+						.box.n3 .level >div:nth-child(2)::before,
+						.box.n4 .level >div:nth-child(2)::before,
+						.box.n5 .level >div:nth-child(2)::before{
+							opacity: 1;
+							transition: all 1s;
+						}
+					.box .level >div:nth-child(3)::before{
 						display: block;
 						width: 100%;
 						height: 100%;
 						background-image: url('marcador/o-2.png');
 						content: "";
+						opacity: 0;
 					}
-					.box.n4 .level >div:nth-child(1)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/o-1.png');
-						content: "";
-					}
-					.box.n4 .level >div:nth-child(2)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/s.png');
-						content: "";
-					}
-					.box.n4 .level >div:nth-child(3)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/o-2.png');
-						content: "";
-					}
-					.box.n4 .level >div:nth-child(4)::before{
+						.box.n3 .level >div:nth-child(3)::before,
+						.box.n4 .level >div:nth-child(3)::before,
+						.box.n5 .level >div:nth-child(3)::before{
+							opacity: 1;
+							transition: all 1s;
+						}
+					.box .level >div:nth-child(4)::before{
 						display: block;
 						width: 100%;
 						height: 100%;
 						background-image: url('marcador/c.png');
 						content: "";
+						opacity: 0;
 					}
-					.box.n5 .level >div:nth-child(1)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/o-1.png');
-						content: "";
-					}
-					.box.n5 .level >div:nth-child(2)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/s.png');
-						content: "";
-					}
-					.box.n5 .level >div:nth-child(3)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/o-2.png');
-						content: "";
-					}
-					.box.n5 .level >div:nth-child(4)::before{
-						display: block;
-						width: 100%;
-						height: 100%;
-						background-image: url('marcador/c.png');
-						content: "";
-					}
-					.box.n5 .level >div:nth-child(5)::before{
+						.box.n4 .level >div:nth-child(4)::before,
+						.box.n5 .level >div:nth-child(4)::before{
+							opacity: 1;
+							transition: all 1s;
+						}
+					.box .level >div:nth-child(5)::before{
 						display: block;
 						width: 100%;
 						height: 100%;
 						background-image: url('marcador/o-3.png');
 						content: "";
+						opacity: 0;
 					}
+						.box.n5 .level >div:nth-child(5)::before{
+							opacity: 1;
+							transition: all 1s;
+						}
+					
 /* CONTENT */
 				.content{
 					padding: 1rem 2rem;
@@ -282,6 +248,7 @@
 					background-position: 50% bottom;
 					background-size: contain;
 					background-repeat: no-repeat;
+					transition: all 1.5s;
 				}
 				@media (min-width: 768px) {
 					.box footer{
