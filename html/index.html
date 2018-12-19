@@ -385,6 +385,7 @@
       buttonPopupContainer.querySelector(".subcontent").innerHTML = info.content;
       buttonPopupContainer.style.display = "flex";
       buttonPopupContainer.querySelector(".nextBtn").onclick = closePopup;
+      buttonPopupContainer.querySelector(".nextBtn").focus();
     }
 
     function showLevelPopup(level, callback) {
@@ -397,9 +398,16 @@
       levelPopupContainer.querySelector("h2").innerHTML = info.header;
       levelPopupContainer.querySelector(".subcontent").innerHTML = info.content;
       levelPopupContainer.style.display = "flex";
-      levelPopupContainer.querySelector(".box").classList.add("n" + ++level);
+      const levelClassName = "n" + ++level;	
+      window.setTimeout(delayedAddClass, 1000, levelPopupContainer.querySelector(".box"), levelClassName);
       levelPopupContainer.querySelector(".nextBtn").onclick = closePopup;
+      levelPopupContainer.querySelector(".nextBtn").focus();
     }
+
+    function delayedAddClass(element, newClassName) {
+      element.classList.add(newClassName);
+    }
+	
     
     gate({
       wrapperDiv: gateDiv,
