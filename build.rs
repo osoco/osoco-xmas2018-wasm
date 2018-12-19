@@ -35,6 +35,6 @@ fn main() {
     packer.music(Path::new("src_assets/music"));
     packer.sounds(Path::new("src_assets/sounds"));
     
-    if is_wasm { packer.gen_javascript_and_html(); }
+    if is_wasm { packer.gen_javascript(); }
     packer.gen_asset_id_code(&gen_code_path);
 }
