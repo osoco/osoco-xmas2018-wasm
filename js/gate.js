@@ -38,7 +38,9 @@ function gate(args) {
   const onerror = args.onerror;
   const readCookie = args.readCookie;
   const writeCookie = args.writeCookie;
-
+  const onlevelUnlocked = args.onlevelUnlocked;  
+  const onbuttonUnlocked = args.onbuttonUnlocked;
+    
   var gateIsBroken = false;
   var Module = {};
   Module.loadingAudioCount = 0;
@@ -225,10 +227,12 @@ function gate(args) {
         fmod: function fmod(a,b) { return a % b; },
         round: Math.round,
         onFinishedLevel: function(level) {
-          console.log("Finished level " + level);	      
+            pause();	      
+            onlevelUnlocked(level, function next() { resume() });
         },
         onButtonPressed: function(level, buttonId) {
-          console.log("Button " + buttonId + " pressed in level " + level);
+            pause();	      
+            onbuttonUnlocked(level, buttonId, function next() { resume() });
         }
       }
     };
@@ -562,6 +566,14 @@ function gate(args) {
       if (onquit) {
         onquit();
       }
+    }
+
+    function pause() {
+      Module.currentlyRunning = false;
+    }
+
+    function resume() {
+      Module.currentlyRunning = true;	  
     }
 
     return {
