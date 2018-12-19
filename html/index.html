@@ -115,13 +115,13 @@
 							background-position: 50%;
 						}
 					.level .o{
-						background-image: url('marcador/txt-o.png')
+						background-image: url('images/txt-o.png')
 					}
 					.level .s{
-						background-image: url('marcador/txt-s.png')	
+						background-image: url('images/txt-s.png')	
 					}
 					.level .c{
-						background-image: url('marcador/txt-c.png')	
+						background-image: url('images/txt-c.png')	
 					}
 
 					@media (min-width: 768px) {
@@ -133,7 +133,7 @@
 						display: block;
 						width: 100%;
 						height: 100%;
-						background-image: url('marcador/o-1.png');
+						background-image: url('images/o-1.png');
 						content: "";
 						opacity: 0;
 					}
@@ -149,7 +149,7 @@
 						display: block;
 						width: 100%;
 						height: 100%;
-						background-image: url('marcador/s.png');
+						background-image: url('images/s.png');
 						content: "";
 						opacity: 0;
 					}
@@ -164,7 +164,7 @@
 						display: block;
 						width: 100%;
 						height: 100%;
-						background-image: url('marcador/o-2.png');
+						background-image: url('images/o-2.png');
 						content: "";
 						opacity: 0;
 					}
@@ -178,7 +178,7 @@
 						display: block;
 						width: 100%;
 						height: 100%;
-						background-image: url('marcador/c.png');
+						background-image: url('images/c.png');
 						content: "";
 						opacity: 0;
 					}
@@ -191,7 +191,7 @@
 						display: block;
 						width: 100%;
 						height: 100%;
-						background-image: url('marcador/o-3.png');
+						background-image: url('images/o-3.png');
 						content: "";
 						opacity: 0;
 					}
@@ -269,19 +269,19 @@
 					}
 				}
 				.box.n1 footer{
-					background-image: url('marcador/bg-1.png')
+					background-image: url('images/bg-1.png')
 				}
 				.box.n2 footer{
-					background-image: url('marcador/bg-2.png')
+					background-image: url('images/bg-2.png')
 				}
 				.box.n3 footer{
-					background-image: url('marcador/bg-3.png')
+					background-image: url('images/bg-3.png')
 				}
 				.box.n4 footer{
-					background-image: url('marcador/bg-4.png')
+					background-image: url('images/bg-4.png')
 				}
 				.box.n5 footer{
-					background-image: url('marcador/bg-5.png')
+					background-image: url('images/bg-5.png')
 				}
 
 				iframe { width: 100%; height: 100%; border: none }
@@ -298,31 +298,29 @@
       <canvas id="gate-canvas" style="display:none"></canvas>
     </div>
 
-	<div id="levelPopupContainer" class="popup">
-		<div class="box  n5">
-			<div class="level">
-				<div class="o"></div>
-				<div class="s"></div>
-				<div class="o"></div>
-				<div class="c"></div>
-				<div class="o"></div>
-			</div>
-			<div class="content">
-				<h2>Title</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum quidem sapiente facere quia nemo cumque ad alias quos reprehenderit suscipit non officia minima corrupti dolorum, illum voluptatum ducimus nihil eos.</p>
-				<a href="#" class="nextBtn">Continuar</a>
-			</div>
-			<footer>
-				
-			</footer>
-		</div>
-	</div>
+    <div id="levelPopupContainer" class="popup">
+      <div class="box">
+        <div class="level">
+          <div class="o"></div>
+          <div class="s"></div>
+          <div class="o"></div>
+          <div class="c"></div>
+          <div class="o"></div>
+        </div>
+        <div class="content">
+          <h2></h2>	  
+          <div class="subcontent"></div>
+          <a href="#" class="nextBtn">Continuar</a>
+        </div>
+	<footer></footer>
+      </div>
+    </div>
 
     <div id="buttonPopupContainer" class="popup">
       <div class="box">
         <div class="content">
           <h2></h2>
-          <div id="subcontent"></div>
+          <div class="subcontent"></div>
           <a href="#" class="nextBtn">Continuar</a>
         </div>
       </div>
@@ -333,12 +331,16 @@
   <script src="howler.js"></script>
   <script src="gate.js"></script>
   <script>
-    const buttonInfo = {
+    const buttonsInfo = {
 	"0": {
 	    "1": { "year": 2003, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
 	    "2": { "year": 2004, "content": "<p>First paragraph</p><p>Other paragraph</p>" }
 	}
     };
+    const levelsInfo = {
+	"0": { "header": "Level 1", "content": "<p>First paragraph</p><p>Other paragraph</p>" }
+    };
+    
     var gateDiv = document.getElementById("gate-wrapper-div");
     var gateCanvas = document.getElementById("gate-canvas");
     var loadingNotice = document.getElementById("loading-notice");
@@ -365,26 +367,38 @@
     }
 
     function onlevelUnlocked(level, callback) {
-	console.log("Level " + level + " unlocked");
-	callback();
+      showLevelPopup(level, callback);
     }
     
     function onbuttonUnlocked(level, button, callback) {
-      console.log("> Button " + button + " in level " + level + " unlocked");
-      showButtonPopup(level, button, callback);
+      showButtonPopup(level, button, callback);	
     }
 
     function showButtonPopup(level, button, callback) {
       const buttonPopupContainer = document.getElementById("buttonPopupContainer");
-      const closePopup = (e) => {
+      const closePopup = e => {
         buttonPopupContainer.style.display = "none";
         callback();
       };
-      const info = buttonInfo[level][button];
+      const info = buttonsInfo[level][button];
       buttonPopupContainer.querySelector("h2").innerHTML = info.year;
-      buttonPopupContainer.querySelector("#subcontent").innerHTML = info.content;
+      buttonPopupContainer.querySelector(".subcontent").innerHTML = info.content;
       buttonPopupContainer.style.display = "flex";
       buttonPopupContainer.querySelector(".nextBtn").onclick = closePopup;
+    }
+
+    function showLevelPopup(level, callback) {
+      const levelPopupContainer = document.getElementById("levelPopupContainer");
+      const closePopup = e => {
+        levelPopupContainer.style.display = "none";
+        callback();
+      };
+      const info = levelsInfo[level];
+      levelPopupContainer.querySelector("h2").innerHTML = info.header;
+      levelPopupContainer.querySelector(".subcontent").innerHTML = info.content;
+      levelPopupContainer.style.display = "flex";
+      levelPopupContainer.querySelector(".box").classList.add("n" + ++level);
+      levelPopupContainer.querySelector(".nextBtn").onclick = closePopup;
     }
     
     gate({

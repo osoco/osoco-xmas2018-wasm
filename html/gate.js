@@ -41,7 +41,8 @@ function gate(args) {
   const onlevelUnlocked = args.onlevelUnlocked;  
   const onbuttonUnlocked = args.onbuttonUnlocked;
     
-  var gateIsBroken = false;
+  var animationRequest;  
+  var gateIsBroken = false;    
   var Module = {};
   Module.loadingAudioCount = 0;
   Module.currentlyRunning = false;
@@ -413,7 +414,7 @@ function gate(args) {
           Module.gateWasmInit();
           Module.gateWasmOnResize(canvas.width, canvas.height);
           setSpriteAttribPointers();
-          requestAnimationFrame(updateAndDraw);
+          animationReq = requestAnimationFrame(updateAndDraw);
           document.addEventListener('keydown', e => handleKeyEvent(e.key, true));
           document.addEventListener('keyup', e => handleKeyEvent(e.key, false));
           canvas.addEventListener('mousemove', e => handleMouseMotion(e));
@@ -437,12 +438,11 @@ function gate(args) {
             quitApp();
           }
         }
-        requestAnimationFrame(updateAndDraw); // TODO don't request animation frames after app has stopped?
+        animationReq = requestAnimationFrame(updateAndDraw); // TODO don't request animation frames after app has stopped?
       } catch(err) { gateFail(err); }
     }
 
     function handleKeyEvent(codeStr, down) {
-      if (Module.currentlyRunning) {
         try {
           const code = keycodes[codeStr];
           if (code != undefined) {
@@ -452,7 +452,6 @@ function gate(args) {
             }
           }
         } catch(err) { gateFail(err); }
-      }
     }
 
     function handleMouseMotion(evt) {
@@ -569,11 +568,13 @@ function gate(args) {
     }
 
     function pause() {
-      Module.currentlyRunning = false;
+      cancelAnimationFrame(animationReq);	  
+      Module.currentlyRunning = false;	
     }
 
     function resume() {
-      Module.currentlyRunning = true;	  
+      Module.currentlyRunning = true;
+      animationReq = requestAnimationFrame(updateAndDraw);
     }
 
     return {
