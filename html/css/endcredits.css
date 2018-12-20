@@ -1,5 +1,6 @@
 #titles {
     overflow: hidden;
+    width: 100%;
     background-color: #000;
     font-family: Arial, Helvetica, sans-serif;
     display: none;
@@ -32,7 +33,7 @@
     letter-spacing: 10px;
 }
 #credits dl {
-    margin: 0px auto;
+    margin: 0px 20%;
 }
 #credits dt {
     float: left;
@@ -53,8 +54,8 @@
     font-size: 20px;    
 }
 #credits p {
-    width: 508px;
-    margin: 10px 0px 10px 60px;
+    width: 60%;
+    margin: 10px auto;
     text-align: center;
     font-family: Arial, sans-serif;
     font-size: 20px;

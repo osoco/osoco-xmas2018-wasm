@@ -29,8 +29,11 @@ body {
 ol, ul {
 	list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote {
+    font-face: 12px;
+    font-family: 'Arial', verdana;
+    line-height: 1.2;
+    margin: 0 2em;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
@@ -40,6 +43,11 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+a {
+    text-decoration: underline;
+    color: orange;
 }
 
 @font-face {
@@ -73,13 +81,17 @@ table {
 #game > main{
   background-image: url('../images/noise.png');
   display: flex;
-  height: 80vh;
+  height: 85vh;
   justify-content: space-between;
   padding: 3rem 0;
 }
 
 #game > main > div{
-  width: 33%;
+  width: 35%;
+}
+
+#game > main > div.company {
+  width: 25%
 }
 
 #game h1{
