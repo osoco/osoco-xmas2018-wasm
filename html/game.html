@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <title>OSOCO - 15 Años Viviendo del Software</title>    
     <style>
     * { margin:0; padding:0; }
     html, body { width:100%; height:100%; background-color: black; }
@@ -10,7 +11,7 @@
     video { display: none; }
     #gate-wrapper-div { display: block; width: 100%; height: 100%; background-color: black; overflow: hidden }
     h1 { font-family:Arial,Helvetica,sans-serif;font-size:50px;color:white;text-align:center;padding-top:25px; }
-    p { font-family:Arial,Helvetica,sans-serif;font-size:16px;color:white;text-align:center;padding-top:25px; }
+    p { font-family:Arial,Helvetica,sans-serif;font-size:1em;color:white;text-align:center;padding-top:1em; }
 
 
 	@font-face {
@@ -26,7 +27,7 @@
 		}
 		.popup{
 			color: #666;
-			font-size: 1rem;
+			font-size: 1.5rem;
 			background-color: rgba(255, 255, 255, 0.5);
 			display: none;
 			align-items: center;
@@ -285,7 +286,19 @@
 				}
 
 				iframe { width: 100%; height: 100%; border: none }
-    
+				
+				.subcontent img {
+				    width: 30%;
+				    float: right;
+				}
+
+				.subcontent strong {
+				    color: darkmagenta;
+				}
+
+				.subcontent a {
+				    color: blueviolet;
+				}
     </style>
   </head>
 
@@ -333,13 +346,13 @@
   <script>
     const buttonsInfo = {
 	"0": {
-	    "1": { "year": 2003, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
-	    "2": { "year": 2004, "content": "<p>First paragraph</p><p>Other paragraph</p>" }
+	    "0": { "year": 2003, "content": "<h3>El Implacable Gordon Earle Moore</h3><img src=\"https://upload.wikimedia.org/wikipedia/commons/d/da/Gordon_Moore_Scientists_You_Must_Know.png\"/><p>El primer equipo adquirido en OSOCO fue un portátil Toshiba Satellite con procesador <strong>Pentium 4 1.7GHz</strong> y <strong>256 MB SDRAM</strong>. El último equipo que hemos comprado ha sido un Mountain Graphite con un procesador <strong>Intel Core i7 7700 de 4 núcleos a 3.4GHz</strong> y una memoria <strong>64 GB DDR4 a 2133Mhz</strong>.</p><p>Como vemos, la memoria se ha multiplicado por un <strong>factor de 256</strong> y el procesador ha pasado de una escala litográfica <strong>de 180 nm a 14 nm</strong>. Aunque puede que avances venideros, como la computación cuántica, cambien las cosas, parece que durante todos estos años la <a href=\"https://es.wikipedia.org/wiki/Ley_de_Moore\" target=\"_blank\">Ley de Moore</a> se ha seguido cumplido fielmente.</p>" },
+	    "1": { "year": 2004, "content": "<h3>De CVS a DVCS</h3><p>Este año se liberó la versión 1.0 de <a href=\"https://subversion.apache.org/\" target=\"_blank\">Subversion</a> que fundamentalmente consistía en una reescritura de <a href=\"https://en.wikipedia.org/wiki/Concurrent_Versions_System\" target=\"_blank\">CVS</a>, que aunque se había convertido en el estándar de facto en el mundo de los sistemas de control de versiones (SCM), tenía importantes limitaciones.</p><p>En OSOCO comenzamos usando CVS, posteriormente migramos a Subversion y algunos años después comenzamos a usar Git, que conceptualmente es muy diferente a los anteriores, al tratarse de un sistemas de control de versiones distribuido (DVCS). Actualmente mantenemos nuestros repositorios Git privados usando <a href=\"https://www.phacility.com/phabricator/\" target=\"_blank\">Phabricator</a> y los públicos en nuestra cuenta de <a href=\"https://github.com/osoco\" target=\"_blank\">GitHub</a>.</p>" }
 	},
 	"1": {
-	    "1": { "year": 2005, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
-	    "2": { "year": 2006, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
-	    "3": { "year": 2007, "content": "<p>First paragraph</p><p>Other paragraph</p>" }
+	    "0": { "year": 2005, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "1": { "year": 2006, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
+	    "2": { "year": 2007, "content": "<p>First paragraph</p><p>Other paragraph</p>" }
 	},
 	"2": {
 	    "0": { "year": 2008, "content": "<p>First paragraph</p><p>Other paragraph</p>" },
