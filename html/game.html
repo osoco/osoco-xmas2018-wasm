@@ -446,7 +446,7 @@
       const levelPopupContainer = document.getElementById("levelPopupContainer");
       const closePopup = e => {
         levelPopupContainer.style.display = "none";
-	if (level == 1) {
+	if (level == 5) {
           document.location.href = '../index.html';
 	} else {
           callback();
@@ -455,7 +455,7 @@
       const info = levelsInfo[level];
       levelPopupContainer.querySelector("h2").innerHTML = info.header;
       levelPopupContainer.querySelector(".subcontent").innerHTML = info.content;
-      if (level == 0) {
+      if (level == 4) {
         levelPopupContainer.querySelector(".nextBtn").text = "Volver";	    
       }
       levelPopupContainer.style.display = "flex";
