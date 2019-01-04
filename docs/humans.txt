@@ -1,0 +1,31 @@
+/* TEAM */
+
+	Chefs: Ruth Zamorano y Rafael Luque
+	Contact: info [at] osoco.es
+	Twitter: @osoco
+	From: Villaviciosa de Odón, Madrid, Spain
+
+	Character designer: Emilio Rodriguez
+	Twitter: @LUREKA
+	
+	Game developer: Rafael Luque
+	Twitter: @rafael_luque
+
+	Game Assets & Web Design: Salugral Adriana
+	Twitter: @Salugral
+
+	Web Design: Oscar Bustos
+	Twitter: @elchiconube
+
+/* MADE WITH */
+
+	Programming: Rust, WebAssembly and JavaScript.
+	Editors: Emacs on NixOS and Sublime on MacOS.
+
+/* CREDITS */
+
+	Forked from SergiusIW's chirperjax game: https://github.com/SergiusIW/chirperjax
+
+        Background music by Patrick de Arteaga: https://patrickdearteaga.com/chiptune-8-bit-retro/
+
+        Other sounds licensed under CC BY-NC-SA.
