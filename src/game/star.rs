@@ -28,11 +28,11 @@ use super::util::idx_to_vec;
 pub const OBTAIN_FADE_VEL: f64 = 1.8;
 pub const OBTAIN_VANISH_DELAY: f64 = 0.85;
 
-pub struct Star { id: HbId, obtain_time: f64 }
+pub struct Star { id: HbId, obtain_time: f64, level: usize }
 
 impl Star {
-    pub fn new(id: HbId, pos: Idx2) -> (Star, Hitbox) {
-        (Star { id, obtain_time: f64::INFINITY }, Shape::circle(13.).place(idx_to_vec(pos)).still())
+    pub fn new(id: HbId, pos: Idx2, level: usize) -> (Star, Hitbox) {
+        (Star { id, obtain_time: f64::INFINITY, level }, Shape::circle(13.).place(idx_to_vec(pos)).still())
     }
 
     pub fn id(&self) -> HbId { self.id }
@@ -46,9 +46,17 @@ impl Star {
             let fade_time = time - self.obtain_time;
             let fade = if fade_time > 0. { OBTAIN_FADE_VEL * fade_time } else { 0. };
             let angle = Star::angle(time);
-            let lag_angle = Star::angle(time - 0.21);
-            renderer.draw_flash(&affine.pre_rotate(lag_angle), SpriteId::Star, 1.);
-            renderer.draw_flash(&affine.pre_rotate(angle), SpriteId::Star, fade);
+            //let lag_angle = Star::angle(time - 0.21);
+            //renderer.draw_flash(&affine.pre_rotate(lag_angle), SpriteId::Star, 1.);
+	    let star_sprite = match self.level {
+                0 => SpriteId::N1,
+    		1 => SpriteId::N2,
+    		2 => SpriteId::N3,
+    		3 => SpriteId::N4,
+		4 => SpriteId::N5,
+    		_ => SpriteId::Star,
+	    };
+            renderer.draw_flash(&affine.pre_rotate(angle), star_sprite, fade);
         }
     }
 

@@ -16,7 +16,7 @@
 
 use game::{GameBoard, LasorKind, PlatformKind, WarpColor, Idx2};
 
-pub const LEVEL_COUNT: usize = 7;
+pub const LEVEL_COUNT: usize = 5;
 
 const LEVELS: [&'static str; LEVEL_COUNT] = [
     include_str!("levels/level0.txt"),
@@ -24,8 +24,6 @@ const LEVELS: [&'static str; LEVEL_COUNT] = [
     include_str!("levels/level2.txt"),
     include_str!("levels/level3.txt"),
     include_str!("levels/level4.txt"),
-    include_str!("levels/level5.txt"),
-    include_str!("levels/level6.txt"),
 ];
 
 const LEVELS_INDEX: [&'static str; LEVEL_COUNT] = [
@@ -34,15 +32,13 @@ const LEVELS_INDEX: [&'static str; LEVEL_COUNT] = [
     include_str!("levels/level2_index.txt"),
     include_str!("levels/level3_index.txt"),
     include_str!("levels/level4_index.txt"),
-    include_str!("levels/level5_index.txt"),
-    include_str!("levels/level6_index.txt"),
 ];
 
 pub fn load(level_num: usize) -> GameBoard {
     let level = LevelFile::new(LEVELS[level_num]);
     let level_index = LevelFile::new(LEVELS_INDEX[level_num]);
 
-    let mut board = GameBoard::builder(level.dims);
+    let mut board = GameBoard::builder(level.dims, level_num);
     for y in 0..level.dims.1 {
         for x in 0..level.dims.0 {
             let pos = (x, y);

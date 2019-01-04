@@ -30,6 +30,7 @@ mod warp;
 
 use std::collections::HashMap;
 use std::f64;
+use std::os::raw::c_uint;
 
 use gate::{Audio, AppContext};
 use gate::renderer::Renderer;
@@ -50,6 +51,7 @@ use self::platform::Platform;
 use self::button::ButtonAction;
 use self::util::{IdGen, idx_to_vec, vec_to_affine, card_offset};
 use self::warp::Lasor;
+use wasm_imports::*;
 
 pub use self::builder::GameBoardBuilder;
 pub use self::platform::PlatformKind;
@@ -61,6 +63,7 @@ const CELL_LEN: i32 = 8;
 pub const SCREEN_PIXELS_HEIGHT: f64 = CELL_LEN as f64 * 24.;
 
 pub struct GameBoard {
+    level: usize,
     id_gen: IdGen,
     collider: Collider<PieceProfile>,
     move_dir: Option<HorizDir>,
@@ -78,7 +81,7 @@ pub struct GameBoard {
 }
 
 impl GameBoard {
-    pub fn builder(dims: Idx2) -> GameBoardBuilder { GameBoardBuilder::new(dims) }
+    pub fn builder(dims: Idx2, level: usize) -> GameBoardBuilder { GameBoardBuilder::new(dims, level) }
     pub fn is_done(&self) -> bool { self.time() > self.star.level_end_time() }
 
     fn room_pixels(&self) -> Vec2 { v2((self.room_dims.0 * CELL_LEN) as f64, (self.room_dims.1 * CELL_LEN) as f64) }
@@ -244,8 +247,11 @@ impl GameBoard {
 
     fn press_button(&mut self, button_id: HbId, audio: &mut Audio<AssetId>) {
         audio.play_sound(SoundId::Button);
-        self.collider.remove_hitbox(button_id);
+        self.collider.remove_hitbox(button_id);	
         let mut actions = self.buttons.remove(&button_id).unwrap();
+        unsafe {
+          onButtonPressed(self.level as c_uint, actions.id)
+	}	
         for pos in actions.unlock_cells.drain(..) { self.remove_cell(pos); }
         for (pos, kind) in actions.platforms.drain(..) { self.add_platform(pos, kind); }
     }

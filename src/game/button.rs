@@ -27,7 +27,7 @@ const WIDTH: f64 = CELL_LEN as f64 - 0.1;
 const HEIGHT: f64 = 1.;
 const Y_OFFSET: f64 = -0.5 * CELL_LEN as f64 + 0.5 * HEIGHT;
 
-pub struct ButtonAction { pub unlock_cells: Vec<Idx2>, pub platforms: Vec<(Idx2, PlatformKind)> }
+pub struct ButtonAction { pub id: u32, pub unlock_cells: Vec<Idx2>, pub platforms: Vec<(Idx2, PlatformKind)> }
 
 pub fn shape(pos: Idx2) -> PlacedShape {
     Shape::rect(v2(WIDTH, HEIGHT)).place(idx_to_vec(pos) + v2(0., Y_OFFSET))

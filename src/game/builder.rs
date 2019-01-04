@@ -34,6 +34,7 @@ use super::util::{IdGen, idx_to_vec, card_offset};
 enum PendingCell { Wall, Floor, Gate, Spawn(WarpColor, bool) }
 
 pub struct GameBoardBuilder {
+    level: usize,
     id_gen: IdGen,
     collider: Collider<PieceProfile>,
     room_dims: Idx2,
@@ -48,8 +49,9 @@ pub struct GameBoardBuilder {
 }
 
 impl GameBoardBuilder {
-    pub fn new(room_dims: Idx2) -> GameBoardBuilder {
+    pub fn new(room_dims: Idx2, level: usize) -> GameBoardBuilder {
         GameBoardBuilder {
+	    level,
             id_gen: IdGen::new(),
             collider: Collider::new(),
             room_dims,
@@ -65,12 +67,12 @@ impl GameBoardBuilder {
     }
 
     fn button_mut(&mut self, index: u32) -> &mut (Option<Idx2>, ButtonAction) {
-        self.buttons.entry(index).or_insert((None, ButtonAction { unlock_cells: Vec::new(), platforms: Vec::new() }))
+        self.buttons.entry(index).or_insert((None, ButtonAction { id: index, unlock_cells: Vec::new(), platforms: Vec::new() }))
     }
 
     pub fn add_player(&mut self, pos: Idx2) { self.player = Some(PlayerEnum::Start(idx_to_vec(pos))); }
     pub fn add_star(&mut self, pos: Idx2) {
-        let (star, hitbox) = Star::new(self.id_gen.next(), pos);
+        let (star, hitbox) = Star::new(self.id_gen.next(), pos, self.level);
         let overlaps = self.collider.add_hitbox(PieceProfile::new(star.id(), PieceKind::Star), hitbox);
         assert!(overlaps.is_empty(), "unexpected overlap with star hitbox");
         self.star = Some(star);
@@ -121,6 +123,7 @@ impl GameBoardBuilder {
         let lasors = builder_lasors.drain(..).map(|(pos, kind, color)| self.form_lasor(pos, kind, color)).collect();
 
         let mut board = GameBoard {
+	    level: self.level,
             id_gen: self.id_gen,
             collider: self.collider,
             move_dir: None,
