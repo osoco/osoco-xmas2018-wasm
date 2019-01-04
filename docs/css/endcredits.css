@@ -32,22 +32,19 @@
     text-transform: uppercase;
     letter-spacing: 10px;
 }
+
+ 
 #credits dl {
-    margin: 0px 20%;
+    margin: 0px 2rem;
 }
 #credits dt {
-    float: left;
-    width: 260px;
     margin: 0;
     padding: 13px 0 0 0;
-    text-align: right;
     font-family: "Arial Narrow", sans-serif;
     font-size: 20px;
-    clear:left;
 }
 #credits dd {
     width: 100%;
-    margin: 0 0 0 280px;
     padding: 13px 0 0 0;
     font-family: "Arial Black", sans-serif;
     font-weight: bold;
@@ -68,6 +65,24 @@
     font-size: 10px;
     font-family: sans-serif;
 }
+
+@media screen and (min-width: 901px) {
+    #credits dl {
+        margin: 0px 20%;
+    }
+    #credits dt {
+        float: left;
+        width: 260px;
+        text-align: right;
+        clear:left;
+    }
+    #credits dd {
+        width: 100%;
+        margin: 0 0 0 280px;
+    }
+}   
+
+
 .clearfix: after {
     visibility: hidden;
     display: block;

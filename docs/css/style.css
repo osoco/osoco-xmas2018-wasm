@@ -66,10 +66,13 @@ a {
   background: linear-gradient(to bottom, #395b7e 0%,#1a2e48 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#395b7e', endColorstr='#1a2e48',GradientType=0 );
   color: #fff;
-  font-size: 16px;
-  display: flex;
-  flex-wrap: wrap;
+  font-size: 16px; 
   -webkit-font-smoothing: antialiased;
+ 	
+ 		display: flex;
+	  flex-wrap: wrap;
+	 
+	
 }
 #game figure img{
   max-width: 100%;
@@ -79,20 +82,27 @@ a {
  min-height: 100vh;
 }
 
-#game > main{
+#game > main section{
   background-image: url('../images/noise.png');
-  display: flex;
-  /*height: 85vh;*/
-  justify-content: space-between;
-  padding: 3rem 0;
+  padding: 0 2rem;
 }
+@media screen and (min-width: 901px) {
 
-#game > main > div{
-  width: 35%;
-}
+	#game > main section{
+		display: flex;
+	  	padding: 0;
+	  	justify-content: center;
+	  	padding: 3rem 0;
+	 } 
 
-#game > main > div.company {
-  width: 25%
+	#game section > div{
+	  width: 35%;
+	}
+
+	#game section > div.media {
+	  width: 25%;
+	  text-align: left;
+	}
 }
 
 #game h1{
@@ -131,15 +141,23 @@ a {
 }
 
 #game .company .logo {
-  padding: 1rem 0 5rem 0;
+  padding: 1rem 0 2rem 0;
+  width: 100%;
+  max-width: 350px;
 }
 
 #game .badges{
-  display: flex;
-  justify-content: center;
+
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    @media screen and (min-width: 901px) {
+    	max-width: 350px;
+    	justify-content: space-evenly;
+    }
 }
 
-#game .badges figure{
+#game .badges img{
   margin-left: .5rem;
 }
 
@@ -169,10 +187,17 @@ a {
     text-align: center;
   } 
 
+  #game section > div.media { 
+
+  	text-align: center;
+  	margin: 2rem auto;
+  }
+
   #game .actions{
     display: block;
     background-position: center 0;
-    margin: 5rem 0
+    margin: 5rem 0;
+    text-align: center;
   }
   #game > main > div.company { width: 100%; }
   #game .actions .play img {display: none}
