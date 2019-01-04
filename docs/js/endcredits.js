@@ -15,7 +15,9 @@ $(document).ready(function () {
         
         var maskHeight = $(document).height();
         var maskWidth = $(window).width();
-
+	let scrollFactor = 0.9;
+        let scrollDuration = 20000;
+	
         $('#titles').css({
             'width': maskWidth,
             'height': maskHeight
@@ -25,17 +27,17 @@ $(document).ready(function () {
         $('#titles').fadeTo("fast");
         $('#titles').fadeIn();
         $('#credits').css("left", (($('#credits').parent().width() - $('#credits').outerWidth()) / 2) + "px");
-        $('#credits').css("bottom", "-" + (maskHeight * 1.5) + "px");
+        $('#credits').css("bottom", "-" + maskHeight * scrollFactor + "px");
         $('#credits').show('fast');
 
         $('#credits').animate({
             bottom: maskHeight + "px"
         }, {
-            duration: 30000,
+            duration: scrollDuration,
             complete: function () {
                 $('#titles').fadeOut();
                 $('.window').fadeOut();
-                $('#credits').css("bottom", "-" + (maskHeight * 1.5) + "px");
+                $('#credits').css("bottom", "-" + (maskHeight * scrollFactor) + "px");
             },
             step: function (n, t) {
                 var pos = $(this).position();
@@ -46,14 +48,14 @@ $(document).ready(function () {
 
     $('.window .close').click(function (e) {
         e.preventDefault();
-        $('#credits').css("bottom", "-" + ($(document).height() * 1.5) + "px");
+        $('#credits').css("bottom", "-" + ($(document).height() * scrollFactor) + "px");
         $('#titles').hide();
         $('.window').hide();
     });
 
     $('#titles').click(function () {
         $(this).hide();
-        $('#credits').css("bottom", "-" + ($(document).height() * 1.5) + "px");
+        $('#credits').css("bottom", "-" + ($(document).height() * scrollFactor) + "px");
         $('.window').hide();
     });
 });
