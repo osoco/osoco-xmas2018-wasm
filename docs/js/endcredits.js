@@ -15,7 +15,7 @@ $(document).ready(function () {
         
         var maskHeight = $(document).height();
         var maskWidth = $(window).width();
-	let scrollFactor = 0.6;
+	let scrollFactor = 0.9;
         let scrollDuration = 20000;
 	
         $('#titles').css({
