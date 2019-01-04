@@ -9,7 +9,7 @@ It's a forked version of the SergiusIW's [chirperjax game](https://github.com/Se
 
 ## Play Online
 
-You can play online to this game at the [OSOCO's website](https://osoco.es/xmas2018-wasm-game/).
+You can play online to this game at the following URL: https://osoco.github.io/15years-retro-game.
 
 ## Building
 
@@ -38,3 +38,5 @@ This game is licensed by OSOCO under the
 
 The assets, found in the `src_assets/` directory, are licensed under the
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+The background music is "Boss Fight" by Patric de Arteaga (https://patrickdearteaga.com/chiptune-8-bit-retro/).
