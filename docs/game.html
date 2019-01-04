@@ -249,12 +249,16 @@
           overflow-x: hidden;
           position: relative;
 					max-height: calc(100vh - (18vh + 5rem));
+          text-align: center
 				}
 				.content p:first-child{
 					margin-top: 0;
 				}
 
-        #levelPopupContainer .content { padding-top: 120px; }
+        #levelPopupContainer .content { 
+          padding-top: 120px; 
+          padding-bottom: 0;
+        }
 				
 				@media (min-width: 768px) {
 					.content{
@@ -263,17 +267,26 @@
 				}
         .subcontent {display: inline-block;}
 
+         #levelPopupContainer  .subcontent {  
+          background: #eee; 
+          padding: 20px 0 40px;
+          border-radius: 20px;
+        }
+
         .twitter-share-button {  
           color: #fff;
           text-decoration: none;
-          height: 28px;
           padding: 5px 10px 5px 30px;
           font: normal normal bold 14px/18px 'Helvetica Neue',Arial,sans-serif;
           background: #0c7abf 5px 3px no-repeat;
           background-image: url("images/twitter.svg");
           background-size: 20px;
           border-radius: 4px;
+          position: absolute;
+          right: -4px;
+          bottom: 2rem;
         }
+  
 				/* Me invento un boton de 8bits */
 				.box .nextBtn{
 					font-family: 'Dimbo', Verdana, Geneva, Tahoma, sans-serif;
@@ -287,7 +300,7 @@
 					border-left: 4px solid #8cb9db;
 					border-right: 4px solid #8cb9db;
 					text-decoration: none;
-					display: block;
+					display: inline-block;
 					background: #1973b8;
 					transition: all .5s;
 					text-transform: uppercase;
